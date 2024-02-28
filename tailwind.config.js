@@ -7,5 +7,5 @@ export default {
 	daisyui: {
 		themes: ['retro']
 	},
-	plugins: [require('daisyui')]
+	plugins: [require('@tailwindcss/typography'), require('daisyui')]
 };
