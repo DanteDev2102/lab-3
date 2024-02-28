@@ -1,12 +1,9 @@
 <script lang="ts">
 	import Navbar from '$lib/components/navbar.svelte';
+	import Presentation from '$lib/components/presentation.svelte';
 </script>
 
-
-<div style="background-color: #D4F3E7; heigth: 100%; width: 100%;">
+<div>
 	<Navbar />
+	<Presentation />
 </div>
-
-
-
-
