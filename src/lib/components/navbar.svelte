@@ -1,12 +1,23 @@
-<header class="w-full h-44 flex flex-row fixed top-0 text-2xl">
-	<nav class="grid grid-cols-2 grid-rows-1 gap-32">
-		<figure class="h-full">
+<style>
+	.btn-bank {
+		background-color: #00FFA0; 
+		border-color: #33B786;
+		color: #33B786;
+		border-width: 3px;
+		
+	}
+</style>
+
+<header class="w-full h-33 flex flex-row fixed top-0 text-2xl z-50">
+	<nav class="grid grid-cols-2 grid-rows-1 gap-32 ">
+		<figure class="h-full relative bottom-4">
 			<img src="logo.svg" alt="logo" class="w-100 h-32" />
 		</figure>
-		<div class="h-full grid grid-cols-3 grid-rows-1 items-center">
+		<div class="h-full grid grid-cols-4 grid-rows-1 items-center">
 			<a href="/">Nosotros</a>
 			<a href="/">Contactanos</a>
-			<a href="/" class="btn btn-outline btn-accent btn-lg btn-wide text-2xl">Banca en linea</a>
+			<a href="/" class="btn btn-outline btn-accent btn-lg btn-wide text-2xl btn-bank">Banca en linea</a>
 		</div>
 	</nav>
 </header>
+**
