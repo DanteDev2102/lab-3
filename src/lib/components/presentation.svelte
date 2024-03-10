@@ -1,5 +1,5 @@
-<section class="relative top-40 w-full grid grid-cols-2 grid-rows-1 left-5 z-0">
-	<section class="grid grid-cols-1 grid-rows-4 items-center">
+<section class="w-full h-80-vh grid grid-cols-2 grid-rows-1 left-5 z-0">
+	<section class="ml-9 grid grid-cols-1 grid-rows-4 items-center gap-2">
 		<strong>
 			<h1 class="text-4xl">Banco Universitario</h1>
 		</strong>
@@ -14,7 +14,14 @@
 			<button class="btn text-2xl w-72 h-14"> ¿Empezamos? </button>
 		</div>
 	</section>
-	<figure>
+	<figure class="mt-16">
 		<img src="credits-cards.svg" alt="credits-cards" />
 	</figure>
 </section>
+
+<style>
+	.h-80-vh {
+		height: 81vh;
+		background-color: #d4f3e7;
+	}
+</style>
