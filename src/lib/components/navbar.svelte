@@ -1,4 +1,4 @@
-<header class="w-full h-44 flex flex-row fixed top-0 text-2xl">
+<header class="w-full h-44 flex flex-row fixed top-0 text-2xl z-50">
 	<nav class="grid grid-cols-2 grid-rows-1 gap-32">
 		<figure class="h-full">
 			<img src="logo.svg" alt="logo" class="w-100 h-32" />
@@ -10,3 +10,9 @@
 		</div>
 	</nav>
 </header>
+
+<style>
+	header {
+		background-color: #fff;
+	}
+</style>
