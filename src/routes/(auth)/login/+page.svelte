@@ -1,3 +1,23 @@
+<script>
+	import Form from "$lib/components/form.svelte";
+
+	const inputs = [
+		{
+			title: "Correo Electronico",
+			type: "email",
+			iconLeft: false,
+			isRequired: true,
+			icon: 'uil:user'
+		}, {
+			title: "Clave",
+			type: "email",
+			iconLeft: false,
+			isRequired: true,
+			icon: 'uil:lock-alt'
+		}
+	]
+</script>
+
 <div class="bg-blue-100 div">
 	<figure class="bg-White 300 text-Green text-left py-5">
 		<img src="logo.svg" width="50%" height="50%" alt="logo" />
@@ -24,12 +44,13 @@
 							Bienvenidos a Banco Universitario
 						</h2>
 						<p class="mt-2 text-center text-sm text-gray-600">
-							Por favor ingrese su nombre de usuario o ID, y su contraseña para ingresar.
+							Por favor ingrese su correo electronico, y su contraseña para ingresar.
 						</p>
 					</div>
 
-					<form class="mt-8 space-y-6">
-						<input type="hidden" name="remember" value="true" />
+					<Form inputs={inputs} buttonTitle="Ingresar"/>
+
+					<!-- <form class="mt-8 space-y-6">
 						<div class="rounded-md shadow-sm -space-y-px">
 							<div>
 								<label for="email" class="sr-only">Correo Electronico</label>
@@ -81,13 +102,13 @@
 						</div>
 						<div>
 							<button
-								type="submit"
+								type="button"
 								class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 							>
 								Ingresar
 							</button>
 						</div>
-					</form>
+					</form> -->
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,7 @@
 
 <div class="overflow-hidden">
 	<Navbar />
-	<div class="mt-44 relative z-10">
+	<div class="mt-40">
 		<Presentation />
 		<Services />
 	</div>

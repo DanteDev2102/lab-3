@@ -1,5 +1,5 @@
 <section class="w-full h-80-vh grid grid-cols-2 grid-rows-1 left-5 z-0">
-	<section class="ml-9 grid grid-cols-1 grid-rows-4 items-center gap-2">
+	<section class="ml-9 grid grid-cols-1 grid-rows-4 items-center">
 		<strong>
 			<h1 class="title text-4xl">Banco Universitario</h1>
 		</strong>
@@ -11,7 +11,7 @@
 			</p>
 		</div>
 		<div class="w-full flex justify-center">
-			<button class="btn text-2xl w-72 h-14"> ¿Empezamos? </button>
+			<a class="btn text-2xl w-72 h-14" href="/register"> ¿Empezamos? </a>
 		</div>
 	</section>
 	<figure class="mt-16">
