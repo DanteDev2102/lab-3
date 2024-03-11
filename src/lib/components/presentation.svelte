@@ -1,7 +1,7 @@
 <section class="w-full h-80-vh grid grid-cols-2 grid-rows-1 left-5 z-0">
 	<section class="ml-9 grid grid-cols-1 grid-rows-4 items-center gap-2">
 		<strong>
-			<h1 class="text-4xl">Banco Universitario</h1>
+			<h1 class="title text-4xl">Banco Universitario</h1>
 		</strong>
 		<p class="text-6xl">¡LA MEJOR EXPERIENCIA EN UN SOLO CLICK!</p>
 		<div>
