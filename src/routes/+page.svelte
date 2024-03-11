@@ -1,12 +1,13 @@
-<script lang="ts">
+<script>
 	import Navbar from '$lib/components/navbar.svelte';
+	import Presentation from '$lib/components/presentation.svelte';
+	import Services from '$lib/components/services.svelte';
 </script>
 
-
-<div style="background-color: #D4F3E7; heigth: 100%; width: 100%;">
+<div class="overflow-hidden">
 	<Navbar />
+	<div class="mt-44 relative z-10">
+		<Presentation />
+		<Services />
+	</div>
 </div>
-
-
-
-
