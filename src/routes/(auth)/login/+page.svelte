@@ -1,114 +1,57 @@
 <script>
-	import Form from "$lib/components/form.svelte";
+	import Form from '$lib/components/form.svelte';
 
 	const inputs = [
 		{
-			title: "Correo Electronico",
-			type: "email",
+			title: 'Correo Electronico',
+			type: 'email',
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:user'
-		}, {
-			title: "Clave",
-			type: "email",
+		},
+		{
+			title: 'Clave',
+			type: 'email',
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:lock-alt'
 		}
-	]
+	];
 </script>
 
-<div class="bg-blue-100 div">
+<div class="bg-blue-100 div h-screen">
 	<figure class="bg-White 300 text-Green text-left py-5">
 		<img src="logo.svg" width="50%" height="50%" alt="logo" />
 	</figure>
 
-	<div class="h-screen flex justify-between items-center">
-		<div class="ml-12 relative w-1/2 py-12 px-4 sm:px-6 lg:px-8 border-black-300 rounded-xl">
-			<h2 class="text-4xl font-bold mb-8 text-blue-800 text-left">Banco Universitario</h2>
-			<h1 class="text-4xl font-bold mb-8 text-center text-gray-800">Bienvenidos!</h1>
-			<p class="text-center">
+	<div class="flex items-center">
+		<div class="ml-12 w-1/2 py-12 px-4 rounded-xl">
+			<h2 class="text-4xl font-bold mb-8 text-left font-color">Banco Universitario</h2>
+			<h1 class="text-7xl font-bold mb-8 text-left">¡Bienvenidos!</h1>
+			<p class="text-left text-2xl font-bold mr-9">
 				Banco universitario, es el único banco creado para y por los estudiantes, donde se les
-				permitira utilizar diferentes herramientas, a la hora de hacer operaciones o consultar. A
-				tiempo real.
+				permitira utilizar diferentes herramientas, a la hora de hacer operaciones o consultar sus
+				transacciones a tiempo real.
 			</p>
 		</div>
 
-		<div class="mr-12">
-			<div
-				class="flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 rounded-xl"
-			>
+		<div class="mr-7">
+			<div class="flex items-center justify-center bg-white py-28 px-32 rounded-xl">
 				<div class="max-w-md w-full space-y-8">
-					<div>
-						<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-							Bienvenidos a Banco Universitario
-						</h2>
-						<p class="mt-2 text-center text-sm text-gray-600">
-							Por favor ingrese su correo electronico, y su contraseña para ingresar.
-						</p>
+					<h2 class="mt-6 text-left text-3xl font-extrabold">Ingresar</h2>
+
+					<Form {inputs} buttonTitle="Entrar" />
+
+					<div class="flex gap-4">
+						<div class="text-sm">
+							<a href="/" class="font-medium hover:text-indigo-500"> ¿Olvido su contraseña? </a>
+						</div>
+						<div class="text-sm">
+							<a href="/register" class="font-medium hover:text-indigo-500">
+								¿No estas registrado?
+							</a>
+						</div>
 					</div>
-
-					<Form inputs={inputs} buttonTitle="Ingresar"/>
-
-					<!-- <form class="mt-8 space-y-6">
-						<div class="rounded-md shadow-sm -space-y-px">
-							<div>
-								<label for="email" class="sr-only">Correo Electronico</label>
-								<input
-									id="email"
-									name="email"
-									type="text"
-									autocomplete="email"
-									class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-									placeholder="dante@example.com"
-									required
-								/>
-							</div>
-							<div>
-								<label for="password" class="sr-only">Clave</label>
-								<input
-									id="password"
-									name="password"
-									type="password"
-									autocomplete="current-password"
-									required
-									class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-									placeholder="Clave"
-								/>
-							</div>
-						</div>
-						<div class="flex items-center justify-between">
-							<div class="flex items-center">
-								<input
-									id="remember_me"
-									name="remember_me"
-									type="checkbox"
-									class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-								/>
-								<label for="remember_me" class="ml-2 block text-sm text-gray-900">
-									Recuerdame
-								</label>
-							</div>
-							<div class="text-sm">
-								<a href="/" class="font-medium text-indigo-600 hover:text-indigo-500">
-									Olvido su contraseña?
-								</a>
-							</div>
-							<div class="text-sm">
-								<a href="/" class="font-medium text-indigo-600 hover:text-indigo-500">
-									¿No estas registrado?
-								</a>
-							</div>
-						</div>
-						<div>
-							<button
-								type="button"
-								class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-							>
-								Ingresar
-							</button>
-						</div>
-					</form> -->
 				</div>
 			</div>
 		</div>
@@ -121,5 +64,13 @@
 		background-blend-mode: overlay;
 		background-size: contain;
 		background-color: #d4f3e7;
+	}
+
+	.text-sm {
+		color: #33b786;
+	}
+
+	.font-color {
+		color: #33b786;
 	}
 </style>
