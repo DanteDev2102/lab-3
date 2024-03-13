@@ -37,7 +37,7 @@
 		<div class="mr-7">
 			<div class="flex items-center justify-center bg-white py-28 px-32 rounded-xl shadow-2xl">
 				<div class="max-w-md w-full space-y-8">
-					<h2 class="mt-6 text-left text-3xl font-extrabold">Ingresar</h2>
+					<h2 class="mt-6 text-left text-3xl font-extrabold title">Ingresar</h2>
 
 					<Form {inputs} buttonTitle="Entrar" />
 
