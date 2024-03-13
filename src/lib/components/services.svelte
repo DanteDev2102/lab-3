@@ -39,7 +39,9 @@
 					herramientas diseñadas para ayudar a las personas a alcanzar sus metas de ahorro.
 				</p>
 			</div>
-			<div class="bg-white shadow-md rounded-lg p-8">
+		</div>
+		<div class="w-full flex justify-center mt-6">
+			<div class="bg-white shadow-md rounded-lg p-8 w-1/2">
 				<img src="money.png" alt="Descripción de la imagen" class="w-32 mb-4" />
 				<h2 class="title text-2xl font-bold mb-4 text-gray-800">Billetera electronica</h2>
 				<p class="mb-4 text-gray-800">
@@ -47,17 +49,6 @@
 					los usuarios almacenar, gestionar y realizar transacciones con su dinero de forma
 					electrónica. Las billeteras electrónicas son utilizadas como una alternativa conveniente y
 					segura a los pagos en efectivo o con tarjeta física.
-				</p>
-			</div>
-			<div class="bg-white shadow-md rounded-lg p-8">
-				<img src="deal.png" alt="Descripción de la imagen" class="w-32 mb-4" />
-				<h2 class="title text-2xl font-bold mb-4 text-gray-800">Transferencias en linea</h2>
-				<p class="mb-4 text-gray-800">
-					Las transferencias bancarias permiten a los usuarios transferir fondos directamente desde
-					su cuenta bancaria a la cuenta del destinatario. Para realizar una transferencia bancaria
-					online, los usuarios deben proporcionar los detalles bancarios del destinatario, como el
-					número de cuenta y el código de identificación bancaria. Las transferencias bancarias
-					pueden tardar más tiempo en procesarse en comparación con otros métodos de pago.
 				</p>
 			</div>
 		</div>

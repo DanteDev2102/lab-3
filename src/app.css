@@ -5,3 +5,11 @@
 .title {
     color: #33b786;
 }
+
+.bg-img {
+    background-image: url('bg.png');
+    background-blend-mode: overlay;
+    background-size: contain;
+    background-color: #d4f3e7;
+}
+

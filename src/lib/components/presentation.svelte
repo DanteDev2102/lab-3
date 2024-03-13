@@ -1,4 +1,4 @@
-<section class="w-full h-80-vh grid grid-cols-2 grid-rows-1 left-5 z-0">
+<section class="w-full h-80-vh grid grid-cols-2 grid-rows-1">
 	<section class="ml-9 grid grid-cols-1 grid-rows-4 items-center">
 		<strong>
 			<h1 class="title text-4xl">Banco Universitario</h1>
@@ -21,7 +21,7 @@
 
 <style>
 	.h-80-vh {
-		height: 81vh;
+		height: 85vh;
 		background-color: #d4f3e7;
 	}
 </style>
