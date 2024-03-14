@@ -2,7 +2,7 @@
   <nav>
     <h6 class="footer-title">Banco</h6> 
     <a class="link link-hover" href="/">Nosotros</a>
-    <a class="link link-hover" href="/">Contactanos</a>
+    <a class="link link-hover" href="/contact">Contactanos</a>
     <a class="link link-hover" href="/">Trabajos</a>
   </nav> 
   <nav>

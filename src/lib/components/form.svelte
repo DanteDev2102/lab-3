@@ -8,9 +8,15 @@
 
 <form class="space-y-6 w-full grid justify-center">
 	<div class="grid grid-cols-1 gap-3 content-center w-full">
-		{#each inputs as input}
-			<InputWithIcon {...input} />
-		{/each}
+  		{#each inputs as input}
+  		  <InputWithIcon 
+  		    type={input.type}
+  		    title={input.title}
+  		    icon={input.icon}
+  		    iconLeft={input.iconLeft}
+  		    isRequired={input.isRequired}
+  		  />
+  		{/each}
 	</div>
 	<button
 		type="button"

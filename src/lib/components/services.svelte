@@ -1,5 +1,5 @@
 <div class="bg-gray-200">
-	<div class="container mx-auto px-4 py-8">
+	<div class="container mx-auto px-4 py-8 text-justify">
 		<h2 class="text-5xl font-bold mb-8 text-left mt-16">Servicios</h2>
 		<div class="grid grid-cols-2 gap-4">
 			<div class="bg-white shadow-md rounded-lg p-8">
