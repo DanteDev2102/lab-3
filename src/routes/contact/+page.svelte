@@ -1,8 +1,10 @@
+<script>
+	import Logo from '$lib/components/logo.svelte';
+</script>
+
 <main class="bg-default h-screen w-full">
 	<header class="grid grid-cols-2">
-		<figure>
-			<img src="logo.svg" alt="logo" class="w-100 h-32" />
-		</figure>
+		<Logo />
 		<nav class="grid grid-cols-1 content-center mt-16 ml-96">
 			<a class="btn w-64 text-white" href="/register">Empezemos</a>
 		</nav>

@@ -1,5 +1,6 @@
 <script>
 	import Form from '$lib/components/form.svelte';
+	import Logo from '$lib/components/logo.svelte';
 
 	const inputs = [
 		{
@@ -56,9 +57,7 @@
 
 <section class="grid grid-cols-2 gap-96 content-center h-screen px-10 bg-img">
 	<section>
-		<figure>
-			<img src="logo.svg" alt="logo" class="w-100 h-32" />
-		</figure>
+		<Logo />
 		<div class="ml-12 w-3/4 py-12 px-4 rounded-xl mt-10">
 			<h2 class="text-4xl font-bold mb-8 text-left title">Banco Universitario</h2>
 			<h1 class="text-6xl font-bold mb-8 text-left">Dedicado para los estudiantes.</h1>

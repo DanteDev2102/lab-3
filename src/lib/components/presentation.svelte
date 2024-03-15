@@ -3,7 +3,7 @@
 		<strong>
 			<h1 class="title text-4xl">Banco Universitario</h1>
 		</strong>
-		<p class="text-6xl">¡LA MEJOR EXPERIENCIA EN UN SOLO CLICK!</p>
+		<h1 class="font-bold text-6xl">¡LA MEJOR EXPERIENCIA EN UN SOLO CLICK!</h1>
 		<div>
 			<p class="text-3xl">
 				Al elegir Banco Universitario, garantizas tu bienestar financiero durante tus años

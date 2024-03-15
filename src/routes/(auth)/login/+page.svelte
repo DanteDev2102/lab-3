@@ -1,5 +1,6 @@
 <script>
 	import Form from '$lib/components/form.svelte';
+	import Logo from '$lib/components/logo.svelte';
 
 	const inputs = [
 		{
@@ -20,9 +21,7 @@
 </script>
 
 <div class="bg-blue-100 bg-img h-screen">
-	<figure class="bg-White 300 text-Green text-left py-5">
-		<img src="logo.svg" width="50%" height="50%" alt="logo" />
-	</figure>
+	<Logo />
 
 	<div class="flex items-center">
 		<div class="ml-12 w-1/2 py-12 px-4 rounded-xl">
