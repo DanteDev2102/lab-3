@@ -7,8 +7,9 @@
 	export let icon: string;
 	export let iconLeft: boolean;
 	export let isRequired: boolean;
+	export let name: string;
 
-	const baseProps = { type, title, isRequired };
+	const baseProps = { type, title, isRequired, name };
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->

@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import Form from '$lib/components/form.svelte';
 	import Logo from '$lib/components/logo.svelte';
+	import Meta from '$lib/components/meta.svelte';
 
 	const inputs = [
 		{
@@ -8,14 +9,16 @@
 			type: 'email',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'quill:mail'
+			icon: 'quill:mail',
+			name: 'email'
 		},
 		{
 			title: 'Clave',
-			type: 'email',
+			type: 'password',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'uil:lock-alt'
+			icon: 'uil:lock-alt',
+			name: 'password'
 		}
 	];
 </script>
@@ -38,7 +41,7 @@
 				<div class="max-w-md w-full space-y-8">
 					<h2 class="mt-6 text-left text-3xl font-extrabold title">Ingresar</h2>
 
-					<Form {inputs} buttonTitle="Entrar" />
+					<Form {inputs} buttonTitle="Entrar" method="POST" action="login" />
 
 					<div class="flex gap-4">
 						<div class="title">
@@ -55,3 +58,5 @@
 		</div>
 	</div>
 </div>
+
+<Meta title="inicio de sesion" />

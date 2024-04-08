@@ -37,6 +37,11 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flowbite": "^2.3.0"
+		"@popperjs/core": "^2.11.8",
+		"axios": "^1.6.8",
+		"dayjs": "^1.11.10",
+		"flowbite": "^2.3.0",
+		"flowbite-svelte": "^0.44.24",
+		"tailwind-merge": "^2.2.2"
 	}
 }

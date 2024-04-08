@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import Form from '$lib/components/form.svelte';
 	import Logo from '$lib/components/logo.svelte';
+	import Meta from '$lib/components/meta.svelte';
 
 	const inputs = [
 		{
@@ -47,7 +48,7 @@
 		},
 		{
 			title: 'Clave',
-			type: 'text',
+			type: 'password',
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:lock-alt'
@@ -81,3 +82,5 @@
 		</p>
 	</div>
 </section>
+
+<Meta title="Registro" />
