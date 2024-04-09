@@ -1,12 +1,10 @@
 import { login } from '$lib/services/bank.js';
+import { extractDataForm } from '$lib/utils/form.ts';
 
 export const actions = {
 	login: async ({ cookies, request }) => {
 		try {
-			const data = await request.formData();
-
-			const email = data.get('email') || '';
-			const password = data.get('password') || '';
+			const { email, password } = extractDataForm(await request.formData(), ['email', 'password']);
 
 			const { data: userData } = await login(email, password);
 

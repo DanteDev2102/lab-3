@@ -9,54 +9,69 @@
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'uil:user'
+			icon: 'uil:user',
+			name: 'name'
 		},
 		{
 			title: 'Apellido',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'uil:user'
+			icon: 'uil:user',
+			name: 'lastname'
 		},
 		{
 			title: 'Cedula',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'uil:user'
+			icon: 'uil:user',
+			name: 'vat'
 		},
 		{
 			title: 'Fecha de nacimiento',
-			type: 'text',
+			type: 'date',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'quill:calendar-more'
+			icon: 'quill:calendar-more',
+			name: 'birthdate'
 		},
 		{
 			title: 'Telefono',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'quill:phone'
+			icon: 'quill:phone',
+			name: 'phone'
 		},
 		{
 			title: 'Correo electronico',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'quill:mail'
+			icon: 'quill:mail',
+			name: 'email'
 		},
 		{
 			title: 'Clave',
 			type: 'password',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'uil:lock-alt'
+			icon: 'uil:lock-alt',
+			name: 'password'
+		},
+		{
+			title: 'Confirmar clave',
+			type: 'password',
+			iconLeft: false,
+			isRequired: true,
+			icon: 'uil:lock-alt',
+			name: 'passwordConfirm'
 		}
 	];
 </script>
 
-<section class="grid grid-cols-2 gap-96 content-center h-screen px-10 bg-img">
+<section class="grid grid-cols-2 gap-96 content-center h-5/6 px-10 bg-img">
 	<section>
 		<Logo />
 		<div class="ml-12 w-3/4 py-12 px-4 rounded-xl mt-10">
@@ -74,7 +89,7 @@
 	>
 		<h2 class="title text-3xl font-bold mt-3 mx-auto">Registrar</h2>
 		<div class="h-2/3">
-			<Form {inputs} buttonTitle="Registrar" />
+			<Form {inputs} buttonTitle="Registrar" method="POST" action="register" />
 		</div>
 		<p class="py-6 mx-auto">
 			<span>¿Ya tienes cuenta?</span>

@@ -7,5 +7,13 @@ export async function login(email: string, password: string) {
 }
 
 export async function register(data) {
-	return await instance.post('/v1/public/client/user/register', data);
+	return await instance.post('/v1/public/client/user/register', {
+		first_name: data.name,
+		last_name: data.lastname,
+		document_number: data.vat,
+		birth_date: data.birthdate,
+		phone_number: data.phone,
+		email: data.email,
+		password: data.password
+	});
 }
