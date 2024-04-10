@@ -8,9 +8,15 @@ export const actions = {
 
 			const { data: userData } = await login(email, password);
 
-			cookies.set('access_token', userData.data.jwt, { path: '/' });
+			if (userData.data.jwt) {
+				cookies.set('access_token', userData.data.jwt, { path: '/' });
+			}
 
-			return { isLoggedIn: true };
+			return {
+				isLoggedIn: true,
+				message: userData.message,
+				errors: userData.errors
+			};
 		} catch (error) {
 			console.log(error);
 			return { isLoggedIn: false };

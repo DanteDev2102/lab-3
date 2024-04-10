@@ -33,7 +33,6 @@
 			type: 'date',
 			iconLeft: false,
 			isRequired: true,
-			icon: 'quill:calendar-more',
 			name: 'birthdate'
 		},
 		{
@@ -92,8 +91,9 @@
 			<Form {inputs} buttonTitle="Registrar" method="POST" action="register" />
 		</div>
 		<p class="py-6 mx-auto">
-			<span>¿Ya tienes cuenta?</span>
-			<a href="/login" class="font-medium hover:text-indigo-500">inicia sesion</a>
+			<a href="/auth/login" class="font-medium hover:text-indigo-500"
+				>¿Ya tienes cuenta? inicia sesion</a
+			>
 		</p>
 	</div>
 </section>

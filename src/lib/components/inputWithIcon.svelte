@@ -21,11 +21,11 @@
 	</div>
 	<div class="input input-bordered flex items-center gap-2">
 		{#if iconLeft}
-			<Icon inline={true} class="w-96 h-4 ml-28" {icon} />
+			<Icon inline={true} class="w-96 h-4 ml-44" {icon} />
 			<Input {...baseProps} />
 		{:else}
 			<Input {...baseProps} />
-			<Icon inline={true} class="w-96 h-4 ml-28" {icon} />
+			<Icon inline={true} class="w-96 h-4 ml-44" {icon} />
 		{/if}
 	</div>
 </label>

@@ -9,6 +9,6 @@
 	{type}
 	placeholder={`ingrese su ${title}`}
 	required={isRequired}
-	class="w-screen text-sm"
+	class="w-screen text-xs"
 	{name}
 />

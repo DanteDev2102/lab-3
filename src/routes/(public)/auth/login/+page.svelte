@@ -48,7 +48,7 @@
 							<a href="/" class="font-medium hover:text-indigo-500"> ¿Olvido su contraseña? </a>
 						</div>
 						<div class="title">
-							<a href="/register" class="font-medium hover:text-indigo-500">
+							<a href="/auth/register" class="font-medium hover:text-indigo-500">
 								¿No estas registrado?
 							</a>
 						</div>
