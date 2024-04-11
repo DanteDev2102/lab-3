@@ -3,17 +3,16 @@
 @tailwind utilities;
 
 .title {
-    color: #33b786;
+	color: #33b786;
 }
 
 .bg-img {
-    background-image: url('bg.png');
-    background-blend-mode: overlay;
-    background-size: contain;
-    background-color: #d4f3e7;
+	background-image: url('/bg.png');
+	background-blend-mode: overlay;
+	background-size: contain;
+	background-color: #d4f3e7;
 }
 
 .bg-default {
-    background-color: #d4f3e7;
+	background-color: #d4f3e7;
 }
-

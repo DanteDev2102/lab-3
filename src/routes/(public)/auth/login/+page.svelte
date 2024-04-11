@@ -21,7 +21,31 @@
 			name: 'password'
 		}
 	];
+
+	export let form;
+
+	let errors: string[] = [];
+
+	$: {
+		if (form?.errors) {
+			errors = form.errors.map(({ error }: { error: string }) => error);
+		}
+
+		setTimeout(() => {
+			errors = [];
+		}, 2000);
+	}
 </script>
+
+{#if errors.length > 0}
+	<div class="toast toast-top toast-end">
+		{#each errors as error}
+			<div class="alert alert-error text-white">
+				<span>{error}</span>
+			</div>
+		{/each}
+	</div>
+{/if}
 
 <div class="bg-blue-100 bg-img h-screen">
 	<Logo />
@@ -43,10 +67,7 @@
 
 					<Form {inputs} buttonTitle="Entrar" method="POST" action="login" />
 
-					<div class="flex gap-4">
-						<div class="title">
-							<a href="/" class="font-medium hover:text-indigo-500"> ¿Olvido su contraseña? </a>
-						</div>
+					<div class="flex justify-center">
 						<div class="title">
 							<a href="/auth/register" class="font-medium hover:text-indigo-500">
 								¿No estas registrado?

@@ -68,7 +68,31 @@
 			name: 'passwordConfirm'
 		}
 	];
+
+	export let form;
+
+	let errors: string[] = [];
+
+	$: {
+		if (form?.errors) {
+			errors = form.errors.map(({ error }: { error: string }) => error);
+		}
+
+		setTimeout(() => {
+			errors = [];
+		}, 2000);
+	}
 </script>
+
+{#if errors.length > 0}
+	<div class="toast toast-top toast-end">
+		{#each errors as error}
+			<div class="alert alert-error text-white">
+				<span>{error}</span>
+			</div>
+		{/each}
+	</div>
+{/if}
 
 <section class="grid grid-cols-2 gap-96 content-center h-5/6 px-10 bg-img">
 	<section>

@@ -11,7 +11,7 @@
 			</p>
 		</div>
 		<div class="w-full flex justify-center">
-			<a class="btn text-2xl w-72 h-14" href="/register"> ¿Empezamos? </a>
+			<a class="btn text-2xl w-72 h-14" href="/auth/register"> ¿Empezamos? </a>
 		</div>
 	</section>
 	<figure class="mt-16">
