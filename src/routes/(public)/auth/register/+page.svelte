@@ -94,7 +94,7 @@
 	</div>
 {/if}
 
-<section class="grid grid-cols-2 gap-96 content-center h-5/6 px-10 bg-img">
+<section class="grid grid-cols-2 gap-96 content-center h-screen px-10 bg-img">
 	<section>
 		<Logo />
 		<div class="ml-12 w-3/4 py-12 px-4 rounded-xl mt-10">
