@@ -33,7 +33,7 @@ export async function getMoves(
 	multiplier?: number | null
 ): Promise<AxiosResponse<IResponse<IMoveApi[]>>> {
 	return await instance.get(
-		`/v1/client/movement?page=${page}&page_size=20${multiplier ? `&multiplier=${multiplier}` : ''}`,
+		`/v1/client/movement?page=${page}&page_size=10${multiplier ? `&multiplier=${multiplier}` : ''}`,
 		{
 			headers: {
 				Authorization: assignBearerToken(token)
