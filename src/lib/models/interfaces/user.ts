@@ -5,6 +5,7 @@ export interface IUser {
 	vat: string;
 	birthdate: string;
 	phone: string;
+	account: string;
 }
 
 export interface IRegisterUser extends IUser {

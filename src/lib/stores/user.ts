@@ -7,7 +7,8 @@ const initialState: IUser = {
 	lastname: '',
 	name: '',
 	phone: '',
-	vat: ''
+	vat: '',
+	account: ''
 };
 
 export const userStore = writable(initialState);

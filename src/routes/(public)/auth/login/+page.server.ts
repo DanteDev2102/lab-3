@@ -21,7 +21,6 @@ export const actions = {
 
 			if (userData.data.jwt) {
 				cookies.set('access_token', userData.data.jwt, { path: '/' });
-				setUser(formatUser(userData.data));
 			}
 
 			return {

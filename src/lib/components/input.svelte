@@ -7,7 +7,7 @@
 
 <input
 	{type}
-	placeholder={`ingrese su ${title}`}
+	placeholder={`Ingrese su ${title}`}
 	required={isRequired}
 	class="w-screen text-xs"
 	{name}

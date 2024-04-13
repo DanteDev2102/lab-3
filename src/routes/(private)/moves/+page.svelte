@@ -1,49 +1,98 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Logo from '$lib/components/logo.svelte';
 	import Meta from '$lib/components/meta.svelte';
-	import type { IUser } from '$lib/models/interfaces/user';
-	import { userStore } from '$lib/stores/user';
+	import { setUser, userStore, resetUser } from '$lib/stores/user';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
 
-	let user: IUser = $userStore;
+	let page: number = 1;
+
+	function incrementPage() {
+		if (data.data.length === 20) page++;
+	}
+
+	function decrementPage() {
+		if (page > 1) page--;
+	}
+
+	function logout() {
+		resetUser();
+	}
+
+	setUser(data.user);
 </script>
 
 <div class="bg-default h-screen w-full">
-
 	<div class="navbar bg-default">
-  		<div class="navbar-start">
-  		    <Logo />
-  		</div>
-  		<div class="navbar-center hidden lg:flex ml-5">
-  			<div class="flex flex-col-inverse">
+		<div class="navbar-start">
+			<Logo />
+		</div>
+		<div class="navbar-center hidden lg:flex pl-16 pt-14">
+			<div class="flex flex-col-inverse">
 				<h2 class="text-3xl font-bold mr-5">Mi Cuenta</h2>
-				<span class="text-3xl font-bold">aaaaa</span>
+				<span class="text-3xl font-bold">{$userStore.account}</span>
 			</div>
-  		</div>
-  		<div class="navbar-end">
-  			alo
-  		</div>
+		</div>
+		<div class="navbar-end mr-6">
+			<div class="avatar placeholder">
+				<div class="bg-neutral text-neutral-content rounded-full w-16">
+					<span class="text-3xl">{`${$userStore.name[0]}${$userStore.lastname[0]}`}</span>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="grid grid-cols-4 mx-10">
-		<div>
-
+		<div class="h-full w-full grid grid-cols-1 gap-96 pt-7 ml-10">
+			<div class="grid grid-cols-1 gap-8">
+				<a class="text-xl" href="/">Vista Previa</a>
+				<a class="text-xl" href="/">Cuentas</a>
+				<a class="text-xl" href="/">Transferencias</a>
+				<a class="text-xl" href="/">Contactos</a>
+				<a class="text-xl" href="/">Perfil</a>
+			</div>
+			<form method="POST" action="?/logout">
+				<button class="btn btn-outline" on:click={logout}>Cerrar Sesion</button>
+			</form>
 		</div>
+
 		<div class="col-span-3">
 			<h1 class="text-xl font-bold">Transferencias</h1>
+
+			<div class="w-full flex justify-center">
+				<div class="w-28">
+					<div class="join grid grid-cols-3">
+						<button
+							class="join-item btn btn-outline hover:bg-inherit hover:text-black"
+							on:click={decrementPage}
+						>
+							&#60
+						</button>
+						<button class="join-item btn btn-outline bg-inherit hover:bg-inherit hover:text-black">
+							{page}
+						</button>
+						<button
+							class="join-item btn btn-outline hover:bg-inherit hover:text-black"
+							on:click={incrementPage}
+						>
+							&#62
+						</button>
+					</div>
+				</div>
+			</div>
 
 			<div class="overflow-x-auto container">
 				<table class="table">
 					<thead>
-					<tr class="text-lg">
-						<th></th>
-						<th>Nro Cuenta</th>
-						<th>Descripcion</th>
-						<th>Fecha</th>
-						<th>Monto</th>
-					</tr>
+						<tr class="text-lg">
+							<th></th>
+							<th>Nro Cuenta</th>
+							<th>Descripcion</th>
+							<th>Fecha</th>
+							<th>Monto</th>
+						</tr>
 					</thead>
 					<tbody>
 						{#each data.data as move}
@@ -65,7 +114,6 @@
 									<td>{new Date(move.created_at).toLocaleString()}</td>
 									<td class="text-red-700 font-bold text-sm">-{move.amount} BS</td>
 								{/if}
-								
 							</tr>
 						{/each}
 					</tbody>
@@ -73,9 +121,6 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
-
-<!-- <p>{JSON.stringify(user)}</p> -->
 
 <Meta title="Transferencias" />

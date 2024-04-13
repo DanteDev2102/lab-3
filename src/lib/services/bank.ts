@@ -41,3 +41,9 @@ export async function getMoves(
 		}
 	);
 }
+
+export async function whoIAm(token: string) {
+	return await instance.get('/v1/client/user/whoami', {
+		headers: { Authorization: assignBearerToken(token) }
+	});
+}

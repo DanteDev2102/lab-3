@@ -21,7 +21,7 @@
 			name: 'lastname'
 		},
 		{
-			title: 'Cedula',
+			title: 'Cédula ',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,

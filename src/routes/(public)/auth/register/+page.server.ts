@@ -1,6 +1,5 @@
 import { AxiosError } from 'axios';
 import { formatUser } from '$lib/formaters/user.js';
-import { setUser } from '$lib/stores/user';
 import { extractDataForm } from '$lib/utils/form';
 import { login, register } from '$lib/services/bank';
 import type { IRegisterUser } from '$lib/models/interfaces/user';
@@ -19,6 +18,14 @@ export const actions = {
 				'phone'
 			]);
 
+			if (data.password !== data.passwordConfirm) {
+				return {
+					isLoggedIn: false,
+					message: 'las contraseñas deben ser iguales',
+					errors: [{ error: 'las contraseñas deben ser iguales' }]
+				};
+			}
+
 			data['birthdate'] = `${data['birthdate']}T00:00:00.341364Z`;
 
 			const { data: registerUser } = await register(data);
@@ -26,7 +33,6 @@ export const actions = {
 			const { data: authUser } = await login(registerUser.data.email, data.password);
 
 			cookies.set('access_token', authUser.data.jwt, { path: '/' });
-			setUser(formatUser(authUser.data));
 
 			return {
 				isLoggedIn: !authUser.data?.jwt,

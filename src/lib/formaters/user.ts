@@ -8,6 +8,7 @@ export function formatUser(user: IUserApi): IUser {
 		lastname: user.last_name,
 		name: user.first_name,
 		phone: user.phone_number,
-		vat: user.document_number
+		vat: user.document_number,
+		account: user.account_number
 	};
 }
