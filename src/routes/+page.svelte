@@ -1,5 +1,5 @@
 <script>
-	import Footer from './../lib/components/footer.svelte';
+	import Footer from '$lib/components/footer.svelte';
 	import Navbar from '$lib/components/navbar.svelte';
 	import Presentation from '$lib/components/presentation.svelte';
 	import Services from '$lib/components/services.svelte';

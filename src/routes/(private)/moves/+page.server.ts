@@ -12,7 +12,8 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 	if (!token) {
 		throw redirect(302, '/');
 	}
-	const { data } = await getMoves(token, 1, null);
+
+	const { data } = await getMoves(token, 1);
 
 	const moves = formatMoves(data.data);
 

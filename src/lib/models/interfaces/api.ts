@@ -32,3 +32,8 @@ export interface IUserApi {
 export interface ILoginApi extends IUserApi {
 	jwt: string;
 }
+
+export interface IBalanceApi {
+	balance: number;
+	last_time: string;
+}
