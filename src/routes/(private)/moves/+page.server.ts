@@ -1,7 +1,10 @@
+import type { PageServerLoad } from './$types';
+import type { IMove } from '$lib/models/interfaces/move';
 import { getMoves } from '$lib/services/bank';
 import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
 import { formatMoves } from '$lib/formaters/moves';
+
+export const prerender = false;
 
 export const load: PageServerLoad = async ({ cookies, locals }) => {
 	const token = cookies.get('access_token');
@@ -15,16 +18,13 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 
 	return {
 		moves,
-		user: locals.user
+		user: locals.user,
+		prevPage: null,
+		nextPage: 2
 	};
 };
 
 export const actions = {
-	logout: async function ({ cookies }) {
-		cookies.delete('access_token', { path: '/' });
-
-		redirect(302, '/');
-	},
 	paginateMoves: async function ({ cookies, request }) {
 		const dataForm = await request.formData();
 		const token = cookies.get('access_token') as string;
@@ -33,14 +33,11 @@ export const actions = {
 
 		const { data } = await getMoves(token, +page);
 
-		const moves = formatMoves(data.data);
-
-		console.log(moves);
+		const moves: IMove[] = formatMoves(data.data);
 
 		return {
-			page,
-			nextPage: page + 1,
-			prevPage: page - 1,
+			nextPage: moves.length === 10 ? page + 1 : null,
+			prevPage: page > 1 ? page - 1 : null,
 			moves
 		};
 	}

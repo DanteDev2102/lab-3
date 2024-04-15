@@ -30,10 +30,11 @@ export async function register(data: IRegisterUser): Promise<AxiosResponse<IResp
 export async function getMoves(
 	token: string,
 	page: number,
+	pageSize: number = 10,
 	multiplier?: number | null
 ): Promise<AxiosResponse<IResponse<IMoveApi[]>>> {
 	return await instance.get(
-		`/v1/client/movement?page=${page}&page_size=10${multiplier ? `&multiplier=${multiplier}` : ''}`,
+		`/v1/client/movement?page=${page}&page_size=${pageSize}${multiplier ? `&multiplier=${multiplier}` : ''}`,
 		{
 			headers: {
 				Authorization: assignBearerToken(token)

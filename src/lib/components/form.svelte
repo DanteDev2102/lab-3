@@ -7,9 +7,14 @@
 	export let buttonTitle: string;
 	export let method: string;
 	export let action: string;
+	export let isUpdate: boolean = false;
 </script>
 
-<form class="space-y-6 w-full grid justify-center" use:enhance {method} action={`?/${action}`}>
+<form class="space-y-6 w-full grid justify-center" use:enhance={()=>{
+	return ({update}) => {
+		update({reset: isUpdate})
+	}
+}} {method} action={`?/${action}`}>
 	<div class="grid grid-cols-1 gap-3 content-center w-full">
 		{#each inputs as input}
 			<InputWithIcon
