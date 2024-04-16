@@ -37,3 +37,13 @@ export interface IBalanceApi {
 	balance: number;
 	last_time: string;
 }
+
+export interface IContactApi {
+	account_number: string;
+	alias: string;
+	description: string;
+	id: number;
+	updated_at: string;
+	created_at: string;
+	user: IUserApi;
+}
