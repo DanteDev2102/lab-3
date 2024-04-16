@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 		moves,
 		user: locals.user,
 		prevPage: null,
-		nextPage: 2
+		nextPage: moves.length === 10 ? 2 : null
 	};
 };
 

@@ -21,7 +21,7 @@
 </script>
 
 <div class="col-span-3">
-	<h1 class="text-xl font-bold">Transferencias</h1>
+	<h1 class="text-2xl font-bold">Transferencias</h1>
 
 	<div class="w-full flex justify-around">
 		<div class="w-28">
@@ -106,6 +106,5 @@
 		</table>
 	</div>
 </div>
-
 
 <Meta title="Transferencias" />

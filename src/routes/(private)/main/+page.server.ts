@@ -16,7 +16,10 @@ export const load: PageServerLoad = async ({ cookies }) => {
 
 	const { data } = await getBalance(token);
 
-	const { input, output } = await getSumEnterAndOutputsValuesInPeriod(token, [1, 3], 2024);
+	const initDate = new Date('2024-01-01').getTime();
+	const finishDate = new Date('2024-09-01').getTime();
+
+	const { input, output } = await getSumEnterAndOutputsValuesInPeriod(token, initDate, finishDate);
 
 	const { data: recentMoves } = await getMoves(token, 1, 5);
 

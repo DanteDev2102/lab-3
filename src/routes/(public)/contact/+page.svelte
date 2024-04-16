@@ -6,7 +6,7 @@
 	<header class="grid grid-cols-2">
 		<Logo />
 		<nav class="grid grid-cols-1 content-center mt-16 ml-96">
-			<a class="btn w-64 text-white" href="/register">Empezemos</a>
+			<a class="btn w-64 text-white" href="/auth/register">Empezemos</a>
 		</nav>
 	</header>
 

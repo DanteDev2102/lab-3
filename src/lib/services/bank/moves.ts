@@ -21,8 +21,8 @@ export async function getMoves(
 
 export async function getSumEnterAndOutputsValuesInPeriod(
 	token: string,
-	mount: number[],
-	year: number
+	initDate: number,
+	finishDate: number
 ) {
 	let moves: IMoveApi[] = [] as IMoveApi[];
 	let page: number = 1;
@@ -36,10 +36,8 @@ export async function getSumEnterAndOutputsValuesInPeriod(
 	const assignValues = (moves: IMoveApi[]): void => {
 		moves
 			.filter(({ created_at }: IMoveApi) => {
-				const date = new Date(created_at);
-				const periodYear = date.getFullYear();
-				const periodMonth = date.getMonth();
-				return year === periodYear && mount.includes(periodMonth);
+				const date = new Date(created_at).getTime();
+				return initDate <= date && finishDate >= date;
 			})
 			.forEach(({ multiplier, amount }: IMoveApi) => {
 				if (multiplier === 1) {

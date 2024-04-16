@@ -1,20 +1,19 @@
 <script lang="ts">
-    import Logo from '$lib/components/logo.svelte';
-    import { userStore, resetUser, setUser } from '$lib/stores/user';
+	import Logo from '$lib/components/logo.svelte';
+	import { userStore, resetUser, setUser } from '$lib/stores/user';
 	import type { LayoutData } from './$types';
 
-    export let data: LayoutData;
+	export let data: LayoutData;
 
-    setUser(data.user);
+	setUser(data.user);
 
 	function logout() {
 		resetUser();
 	}
-
 </script>
 
 <div class="bg-default h-screen w-full">
-    <div class="navbar bg-default">
+	<div class="navbar bg-default">
 		<div class="navbar-start">
 			<Logo />
 		</div>
@@ -33,11 +32,10 @@
 		</div>
 	</div>
 
-    <div class="grid grid-cols-4 mx-10">
-        <div class="h-full w-full grid grid-cols-1 gap-96 pt-7 ml-10">
+	<div class="grid grid-cols-4 mx-10">
+		<div class="h-full w-full grid grid-cols-1 gap-96 pt-7 ml-10">
 			<div class="grid grid-cols-1 gap-8">
 				<a class="text-xl" href="/main">Vista Previa</a>
-				<a class="text-xl" href="/accounts">Cuentas</a>
 				<a class="text-xl" href="/moves">Transferencias</a>
 				<a class="text-xl" href="/contacts">Contactos</a>
 				<a class="text-xl" href="/profile">Perfil</a>
@@ -46,8 +44,7 @@
 				<button class="btn btn-outline" on:click={logout}>Cerrar Sesion</button>
 			</form>
 		</div>
-        
-        <slot />
-    </div>
 
+		<slot />
+	</div>
 </div>

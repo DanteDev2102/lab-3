@@ -1,7 +1,6 @@
 import { AxiosError } from 'axios';
-import { formatUser } from '$lib/formaters/user.js';
 import { extractDataForm } from '$lib/utils/form';
-import { login, register } from '$lib/services/bank';
+import { login, register } from '$lib/services/bank/user';
 import type { IRegisterUser } from '$lib/models/interfaces/user';
 
 export const actions = {
