@@ -1,13 +1,8 @@
-import { formatUser } from '$lib/formaters/user.js';
-import { login } from '$lib/services/bank.js';
-import { setUser } from '$lib/stores/user';
+import type { ILogin } from '$lib/models/interfaces/user';
+
+import { login } from '$lib/services/bank/user';
 import { extractDataForm } from '$lib/utils/form';
 import { AxiosError } from 'axios';
-
-interface ILogin {
-	email: string;
-	password: string;
-}
 
 export const actions = {
 	login: async ({ cookies, request }) => {

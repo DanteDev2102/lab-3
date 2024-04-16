@@ -1,6 +1,8 @@
-import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { getBalance, getMoves, getSumEnterAndOutputsValuesInPeriod } from '$lib/services/bank';
+
+import { redirect } from '@sveltejs/kit';
+import { getMoves, getSumEnterAndOutputsValuesInPeriod } from '$lib/services/bank/moves';
+import { getBalance } from '$lib/services/bank/user';
 import { formatMoves } from '$lib/formaters/moves';
 
 export const prerender = false;

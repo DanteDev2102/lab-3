@@ -1,5 +1,5 @@
 import { formatUser } from '$lib/formaters/user';
-import { whoIAm } from '$lib/services/bank';
+import { whoIAm } from '$lib/services/bank/user';
 import { redirect, type Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {

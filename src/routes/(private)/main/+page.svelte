@@ -1,11 +1,18 @@
 <script lang="ts">
-	import type { PageData } from "./$types";
+	import type { PageData } from './$types';
 
-    export let data: PageData;
-
+	export let data: PageData;
 </script>
 
-<h1>main</h1>
 <p>
-    {JSON.stringify(data, null, 4)}
+	{JSON.stringify(data.user, null, 4)}
+</p>
+
+<p>
+	{JSON.stringify(data.inputs)}
+	{JSON.stringify(data.outputs)}
+</p>
+
+<p>
+	{JSON.stringify(data.recentMoves, null, 2)}
 </p>

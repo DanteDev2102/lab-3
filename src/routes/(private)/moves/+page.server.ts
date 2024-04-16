@@ -1,6 +1,7 @@
 import type { PageServerLoad } from './$types';
 import type { IMove } from '$lib/models/interfaces/move';
-import { getMoves } from '$lib/services/bank';
+
+import { getMoves } from '$lib/services/bank/moves';
 import { redirect } from '@sveltejs/kit';
 import { formatMoves } from '$lib/formaters/moves';
 
