@@ -1,9 +1,16 @@
 <script lang="ts">
+	import Modal from '$lib/components/modal.svelte';
 	import { enhance } from '$app/forms';
 	import Meta from '$lib/components/meta.svelte';
 	import type { PageServerData } from './$types';
 
 	export let data: PageServerData;
+
+	let modal: boolean = false;
+
+	function toogleModal(): void {
+		modal = !modal;
+	}
 
 	let page: number = 1;
 
@@ -11,14 +18,18 @@
 	let nextPage: number | null = data.nextPage;
 	let prevPage: number | null = data.prevPage;
 
-	function incrementPage() {
+	function incrementPage(): void {
 		if (nextPage) page++;
 	}
 
-	function decrementPage() {
+	function decrementPage(): void {
 		if (prevPage) page--;
 	}
 </script>
+
+<Modal id="modal" open={modal} toogleModal={toogleModal}>
+	<h1>holas</h1>
+</Modal>
 
 <div class="col-span-3">
 	<h1 class="text-2xl font-bold">Transferencias</h1>
@@ -62,7 +73,9 @@
 				</button>
 			</form>
 		</div>
-		<button class="btn btn-primary text-white">Realizar <br />Transferencia</button>
+		<button class="btn btn-primary text-white" on:click={() => { modal = true }}>
+			Realizar <br />Transferencia
+		</button>
 	</div>
 
 	<div class="overflow-x-auto container">
