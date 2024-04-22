@@ -1,22 +1,20 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
+	
 	import Modal from '$lib/components/modal.svelte';
-	import { enhance } from '$app/forms';
-	import Meta from '$lib/components/meta.svelte';
+	import Notification from '$lib/components/notification.svelte';
 	import Form from '$lib/components/form.svelte';
+	import Meta from '$lib/components/meta.svelte';
 	import InputWithIcon from '$lib/components/inputWithIcon.svelte';
-	import { getMoves } from '$lib/services/bank/moves';
-	import type { IUser } from '$lib/models/interfaces/user';
-	import { formatMoves } from '$lib/formaters/moves';
+
+	import { enhance } from '$app/forms';
 
 	export let data: PageServerData;
 
 	let canAddContact: boolean = false;
-	let user: IUser = data.user;
 
-	let errors: Array<any> = [];
+	let notifications: Array<any> = [];
 	let modal: boolean = false;
-	let success: boolean = false;
 
 	let page: number = 1;
 	let moves = data.moves;
@@ -24,7 +22,8 @@
 	let prevPage: number | null = data.prevPage;
 
 	function toogleModal(): void {
-		modal = !modal;
+		modal = false;
+		
 	}
 
 	function incrementPage(): void {
@@ -34,107 +33,120 @@
 	function decrementPage(): void {
 		if (prevPage) page--;
 	}
+
+	$: {
+		if (notifications.length > 0) {
+			setTimeout(() => {
+				notifications = [];
+			}, 3000);
+		};
+	}
 </script>
 
+{#if notifications.length > 0}
+	 <Notification messages={notifications} />
+{/if}
+
 <Modal id="modal" open={modal} {toogleModal}>
-	{#if !success && !errors.length}
-		<h2 class="font-bold text-2xl text-center">Transferencia</h2>
-		<Form
-			inputs={[
-				{
-					isRequired: true,
-					name: 'accountNumber',
-					title: 'Numero de cuenta',
-					type: 'text',
-					icon: '',
-					iconLeft: false,
-					placeholder: '',
-					isCheck: false
-				},
-				{
-					isRequired: true,
-					name: 'amount',
-					title: 'Monto',
-					type: 'text',
-					icon: '',
-					iconLeft: false,
-					placeholder: '',
-					isCheck: false
-				},
-				{
-					isRequired: true,
-					name: 'description',
-					title: 'Concepto del pago',
-					type: 'text',
-					icon: '',
-					iconLeft: false,
-					placeholder: '',
-					isCheck: false
-				}
-			]}
-			action="pay"
-			buttonTitle="Realizar Transferencia"
-			method="POST"
-			isUpdate={false}
-			colorBtn="33afb7"
-			colorFontBtn="ffffff"
-			callback={async ({ data }) => {
-				success = data.success;
-				errors = data.errors;
+	<h2 class="font-bold text-2xl text-center">Transferencia</h2>
+	<Form
+		inputs={[
+			{
+				isRequired: true,
+				name: 'accountNumber',
+				title: 'Numero de cuenta',
+				type: 'text',
+				icon: '',
+				iconLeft: false,
+				placeholder: '',
+				isCheck: false
+			},
+			{
+				isRequired: true,
+				name: 'amount',
+				title: 'Monto',
+				type: 'text',
+				icon: '',
+				iconLeft: false,
+				placeholder: '',
+				isCheck: false
+			},
+			{
+				isRequired: true,
+				name: 'description',
+				title: 'Concepto del pago',
+				type: 'text',
+				icon: '',
+				iconLeft: false,
+				placeholder: '',
+				isCheck: false
+			}
+		]}
+		action="pay"
+		buttonTitle="Realizar Transferencia"
+		method="POST"
+		isUpdate={false}
+		colorBtn="33afb7"
+		colorFontBtn="ffffff"
+		callback={async ({ data }) => {
+			toogleModal()
 
-				if (!success) return;
+			if (data.errors.length > 0) {
+				notifications = data.errors.map(({ error }) => {
+					return {
+						type: 'error',
+						message: error
+					}
+				});
+				return;
+			}
+			
+			notifications = [{
+				type:'success',
+				message: 'Transferencia realizada correctamente'
+			}];
 
-				const currentMoves = await getMoves(user.accessToken, page);
-
-				moves = formatMoves(currentMoves.data.data);
-
-				user.balance = data.pay.balance;
+		}}
+	>
+		<InputWithIcon
+			icon=""
+			iconLeft={false}
+			isRequired={true}
+			name="canAddContact"
+			title="Agregar como contacto"
+			placeholder=""
+			type="checkbox"
+			isCheck={canAddContact}
+			handleChange={(e) => {
+				canAddContact = e.target.checked;
 			}}
-		>
+		/>
+
+		{#if canAddContact}
 			<InputWithIcon
 				icon=""
 				iconLeft={false}
 				isRequired={true}
-				name="canAddContact"
-				title="Agregar como contacto"
+				name="alias"
+				title="Alias"
 				placeholder=""
-				type="checkbox"
-				isCheck={canAddContact}
-				handleChange={(e) => {
-					canAddContact = e.target.checked;
-				}}
+				type="text"
+				isCheck={false}
+				handleChange={(e) => {}}
 			/>
-
-			{#if canAddContact}
-				<InputWithIcon
-					icon=""
-					iconLeft={false}
-					isRequired={true}
-					name="alias"
-					title="Alias"
-					placeholder=""
-					type="text"
-					isCheck={false}
-					handleChange={(e) => {}}
-				/>
-				<InputWithIcon
-					icon=""
-					iconLeft={false}
-					isRequired={true}
-					name="descriptionContact"
-					title="Descripcion"
-					placeholder=""
-					type="text"
-					isCheck={false}
-					handleChange={(e) => {}}
-				/>
-			{/if}
-		</Form>
-	{:else if success}
-		<h2>Transferencia Realizada con exito</h2>
-	{:else if !success && errors.length}
-		<h2>{JSON.stringify(errors)}</h2>
-	{/if}
+			<InputWithIcon
+				icon=""
+				iconLeft={false}
+				isRequired={true}
+				name="descriptionContact"
+				title="Descripcion"
+				placeholder=""
+				type="text"
+				isCheck={false}
+				handleChange={(e) => {}}
+			/>
+		{/if}
+	</Form>
 </Modal>
 
 <div class="col-span-3">
@@ -183,6 +195,7 @@
 		</div>
 		<button
 			class="btn btn-primary text-white"
+			style="background-color: #33afb7"
 			on:click={() => {
 				modal = true;
 			}}

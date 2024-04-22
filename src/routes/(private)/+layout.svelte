@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Logo from '$lib/components/logo.svelte';
+	import Icon from '@iconify/svelte';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
@@ -23,11 +24,15 @@
 				<h2 class="text-3xl font-bold mr-5">Mi Saldo</h2>
 				<span class="text-3xl font-bold">{user.balance.toLocaleString()} Bs</span>
 			</div>
+			<button on:click={() => location.reload()}>
+				<Icon icon="pepicons-print:arrow-spin-circle-filled" width="2rem" height="2rem" />
+			</button>
+			
 		</div>
 		<div class="navbar-end mr-6">
 			<div class="avatar placeholder">
 				<div class="bg-neutral text-neutral-content rounded-full w-16">
-					<span class="text-3xl">{`${user.name[0]}${user.lastname[0]}`}</span>
+					<a class="text-3xl" href="/profile">{`${user.name[0]}${user.lastname[0]}`}</a>
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 import type { ICreateMove, IMove } from '$lib/models/interfaces/move';
 
 import { createPayment, getMoves } from '$lib/services/bank/moves';
@@ -23,7 +23,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	};
 };
 
-export const actions = {
+export const actions: Actions = {
 	paginateMoves: async function ({ request, locals }) {
 		const page = +((await request.formData()).get('page') as string);
 

@@ -6,7 +6,7 @@ interface IParams {
 	balance?: number;
 }
 
-export function formatUser(user: IUserApi & IParams): IUser | Partial<IUser> {
+export function formatUser(user: IUserApi & IParams): IUser {
 	return {
 		birthdate: new Date(user.birth_date).toLocaleDateString(
 			{ language: 've-ES' },
@@ -18,7 +18,7 @@ export function formatUser(user: IUserApi & IParams): IUser | Partial<IUser> {
 		phone: user.phone_number,
 		vat: user.document_number,
 		account: user.account_number,
-		accessToken: user.access_token,
-		balance: user.balance
+		accessToken: user.access_token as string,
+		balance: user.balance as number
 	};
 }

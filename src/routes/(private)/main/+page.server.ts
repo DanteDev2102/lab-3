@@ -1,18 +1,12 @@
 import type { PageServerLoad } from './$types';
-
-import { redirect } from '@sveltejs/kit';
 import { getMoves, getSumEnterAndOutputsValuesInPeriod } from '$lib/services/bank/moves';
 import { getBalance } from '$lib/services/bank/user';
 import { formatMoves } from '$lib/formaters/moves';
 
 export const prerender = false;
 
-export const load: PageServerLoad = async ({ cookies }) => {
-	const token = cookies.get('access_token');
-
-	if (!token) {
-		throw redirect(302, '/');
-	}
+export const load: PageServerLoad = async ({ locals }) => {
+	const token: string = locals.user.accessToken;
 
 	const { data } = await getBalance(token);
 

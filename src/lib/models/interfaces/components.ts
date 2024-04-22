@@ -9,3 +9,8 @@ export interface IInput {
 	isCheck?: boolean;
 	handleChange?: (e) => void;
 }
+
+export interface INotification {
+	type: 'error' | 'info' | 'success' | 'warning';
+	message: string;
+}
