@@ -1,8 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 
 export const actions = {
-	logout: async function ({ cookies }) {
-		cookies.delete('access_token', { path: '/' });
+	logout: async function (event) {
+		event.cookies.delete('access_token', { path: '/' });
+		delete event.locals.user;
 		redirect(302, '/');
 	}
 };

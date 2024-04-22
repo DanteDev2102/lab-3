@@ -2,15 +2,17 @@
 	import Form from '$lib/components/form.svelte';
 	import Logo from '$lib/components/logo.svelte';
 	import Meta from '$lib/components/meta.svelte';
+	import type { IInput } from '$lib/models/interfaces/components.js';
 
-	const inputs = [
+	const inputs: IInput[] = [
 		{
 			title: 'Nombre',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:user',
-			name: 'name'
+			name: 'name',
+			placeholder: 'Jhon'
 		},
 		{
 			title: 'Apellido',
@@ -18,15 +20,17 @@
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:user',
-			name: 'lastname'
+			name: 'lastname',
+			placeholder: 'Due'
 		},
 		{
-			title: 'Cédula ',
+			title: 'Cédula',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:user',
-			name: 'vat'
+			name: 'vat',
+			placeholder: '12345678'
 		},
 		{
 			title: 'Fecha de nacimiento',
@@ -41,7 +45,8 @@
 			iconLeft: false,
 			isRequired: true,
 			icon: 'quill:phone',
-			name: 'phone'
+			name: 'phone',
+			placeholder: '+584122222222'
 		},
 		{
 			title: 'Correo electronico',
@@ -49,7 +54,8 @@
 			iconLeft: false,
 			isRequired: true,
 			icon: 'quill:mail',
-			name: 'email'
+			name: 'email',
+			placeholder: 'jhondue@example.com'
 		},
 		{
 			title: 'Clave',
@@ -57,7 +63,8 @@
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:lock-alt',
-			name: 'password'
+			name: 'password',
+			placeholder: 'ingrese su clave'
 		},
 		{
 			title: 'Confirmar clave',
@@ -65,7 +72,8 @@
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:lock-alt',
-			name: 'passwordConfirm'
+			name: 'passwordConfirm',
+			placeholder: 'confirme su clave'
 		}
 	];
 

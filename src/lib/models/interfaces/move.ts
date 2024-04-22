@@ -8,3 +8,12 @@ export interface IMove {
 	multiplier: 1 | -1;
 	updatedAt: string;
 }
+
+export interface ICreateMove {
+	accountNumber: string;
+	amount: string;
+	description: string;
+	canAddContact: boolean;
+	alias?: string;
+	descriptionContact?: string;
+}

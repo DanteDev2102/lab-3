@@ -2,15 +2,17 @@
 	import Form from '$lib/components/form.svelte';
 	import Logo from '$lib/components/logo.svelte';
 	import Meta from '$lib/components/meta.svelte';
+	import type { IInput } from '$lib/models/interfaces/components';
 
-	const inputs = [
+	const inputs: IInput[] = [
 		{
 			title: 'Correo Electronico',
 			type: 'email',
 			iconLeft: false,
 			isRequired: true,
 			icon: 'quill:mail',
-			name: 'email'
+			name: 'email',
+			placeholder: 'example@example.com'
 		},
 		{
 			title: 'Clave',
@@ -18,7 +20,8 @@
 			iconLeft: false,
 			isRequired: true,
 			icon: 'uil:lock-alt',
-			name: 'password'
+			name: 'password',
+			placeholder: 'ingrese su clave'
 		}
 	];
 

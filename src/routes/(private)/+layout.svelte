@@ -1,15 +1,11 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import Logo from '$lib/components/logo.svelte';
-	import { userStore, resetUser, setUser } from '$lib/stores/user';
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
 
-	setUser(data.user);
-
-	function logout() {
-		resetUser();
-	}
+	const { user } = data;
 </script>
 
 <div class="bg-default h-screen w-full">
@@ -20,13 +16,18 @@
 		<div class="navbar-center hidden lg:flex pl-16 pt-14">
 			<div class="flex flex-col-inverse">
 				<h2 class="text-3xl font-bold mr-5">Mi Cuenta</h2>
-				<span class="text-3xl font-bold">{$userStore.account}</span>
+				<span class="text-3xl font-bold">{user.account}</span>
+			</div>
+
+			<div class="mx-7 flex flex-col-inverse">
+				<h2 class="text-3xl font-bold mr-5">Mi Saldo</h2>
+				<span class="text-3xl font-bold">{user.balance.toLocaleString()} Bs</span>
 			</div>
 		</div>
 		<div class="navbar-end mr-6">
 			<div class="avatar placeholder">
 				<div class="bg-neutral text-neutral-content rounded-full w-16">
-					<span class="text-3xl">{`${$userStore.name[0]}${$userStore.lastname[0]}`}</span>
+					<span class="text-3xl">{`${user.name[0]}${user.lastname[0]}`}</span>
 				</div>
 			</div>
 		</div>
@@ -40,8 +41,16 @@
 				<a class="text-xl" href="/contacts">Contactos</a>
 				<a class="text-xl" href="/profile">Perfil</a>
 			</div>
-			<form method="POST" action="/?/logout">
-				<button class="btn btn-outline" on:click={logout}>Cerrar Sesion</button>
+			<form
+				method="POST"
+				action="/?/logout"
+				use:enhance={() => {
+					return ({ update }) => {
+						return update({ reset: true });
+					};
+				}}
+			>
+				<button class="btn btn-outline">Cerrar Sesion</button>
 			</form>
 		</div>
 

@@ -1,18 +1,15 @@
 import type { PageServerLoad } from './$types';
-import type { IMove } from '$lib/models/interfaces/move';
+import type { ICreateMove, IMove } from '$lib/models/interfaces/move';
 
-import { getMoves } from '$lib/services/bank/moves';
-import { redirect } from '@sveltejs/kit';
+import { createPayment, getMoves } from '$lib/services/bank/moves';
 import { formatMoves } from '$lib/formaters/moves';
+import { extractDataForm } from '$lib/utils/form';
+import { createContact } from '$lib/services/bank/contacts';
 
 export const prerender = false;
 
-export const load: PageServerLoad = async ({ cookies, locals }) => {
-	const token = cookies.get('access_token');
-
-	if (!token) {
-		throw redirect(302, '/');
-	}
+export const load: PageServerLoad = async ({ locals }) => {
+	const token = locals.user.accessToken;
 
 	const { data } = await getMoves(token, 1);
 
@@ -27,13 +24,10 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 };
 
 export const actions = {
-	paginateMoves: async function ({ cookies, request }) {
-		const dataForm = await request.formData();
-		const token = cookies.get('access_token') as string;
+	paginateMoves: async function ({ request, locals }) {
+		const page = +((await request.formData()).get('page') as string);
 
-		const page = +(dataForm.get('page') as string);
-
-		const { data } = await getMoves(token, +page);
+		const { data } = await getMoves(locals.user.accessToken, page);
 
 		const moves: IMove[] = formatMoves(data.data);
 
@@ -42,5 +36,42 @@ export const actions = {
 			prevPage: page > 1 ? page - 1 : null,
 			moves
 		};
+	},
+	pay: async function ({ request, locals }) {
+		const token = locals.user.accessToken;
+
+		const { accountNumber, amount, canAddContact, description, alias, descriptionContact } =
+			extractDataForm<ICreateMove>(await request.formData(), [
+				'accountNumber',
+				'amount',
+				'description',
+				'canAddContact',
+				'alias',
+				'descriptionContact'
+			]);
+
+		try {
+			const pay = await createPayment(token, parseFloat(amount), description, accountNumber);
+
+			if (canAddContact) {
+				await createContact(token, {
+					accountNumber,
+					alias,
+					description: descriptionContact
+				});
+			}
+
+			return {
+				pay: pay.data.data,
+				errors: pay.data.errors,
+				success: true
+			};
+		} catch (error) {
+			return {
+				pay: {},
+				errors: error.response.data.errors,
+				success: false
+			};
+		}
 	}
 };

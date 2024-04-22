@@ -19,19 +19,22 @@ export async function getMoves(
 	);
 }
 
+export async function getAllMoves(token: string): Promise<AxiosResponse<IResponse<IMoveApi[]>>> {
+	return await instance.get('/client/movement', {
+		headers: {
+			Authorization: assignBearerToken(token)
+		}
+	});
+}
+
 export async function getSumEnterAndOutputsValuesInPeriod(
 	token: string,
 	initDate: number,
 	finishDate: number
 ) {
-	let moves: IMoveApi[] = [] as IMoveApi[];
-	let page: number = 1;
-
 	const values: { input: number; output: number } = { input: 0, output: 0 };
 
-	const { data } = await getMoves(token, page, 100);
-
-	moves = data.data;
+	const { data } = await getAllMoves(token);
 
 	const assignValues = (moves: IMoveApi[]): void => {
 		moves
@@ -49,14 +52,7 @@ export async function getSumEnterAndOutputsValuesInPeriod(
 			});
 	};
 
-	assignValues(moves);
-
-	while (moves.length % 100 === 0) {
-		page++;
-		const { data: dataPage } = await getMoves(token, page, 100);
-		moves = dataPage.data;
-		assignValues(moves);
-	}
+	assignValues(data.data);
 
 	return values;
 }
@@ -68,7 +64,7 @@ export async function createPayment(
 	accountNumber: string
 ): Promise<AxiosResponse<IResponse<IMoveApi>>> {
 	return await instance.post(
-		'/client/movement/payment',
+		'/client/movement',
 		{
 			amount,
 			description,

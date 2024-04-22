@@ -6,9 +6,11 @@ export interface IUser {
 	birthdate: string;
 	phone: string;
 	account: string;
+	balance: number;
+	accessToken: string;
 }
 
-export interface IRegisterUser extends IUser {
+export interface IRegisterUser extends Omit<IUser, 'balance' | 'accessToken'> {
 	password: string;
 	passwordConfirm: string;
 }
