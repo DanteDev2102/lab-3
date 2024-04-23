@@ -8,6 +8,7 @@ export interface IInput {
 	placeholder?: string;
 	isCheck?: boolean;
 	handleChange?: (e) => void;
+	value?: string;
 }
 
 export interface INotification {

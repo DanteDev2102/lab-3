@@ -11,8 +11,9 @@
 	export let placeholder: string;
 	export let isCheck: boolean;
 	export let handleChange: (e) => void;
+	export let value: string = '';
 
-	const baseProps = { type, placeholder, isRequired, name };
+	const baseProps = { type, placeholder, isRequired, name, value };
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->

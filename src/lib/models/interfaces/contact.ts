@@ -5,7 +5,7 @@ export interface IContact {
 	alias: string;
 	createdAt: string;
 	description: string;
-	id: number;
+	id: number | string;
 	user: IUser;
 	updatedAt: string;
 }

@@ -36,6 +36,7 @@
 				placeholder={input?.placeholder || ''}
 				isCheck={false}
 				handleChange={() => {}}
+				value={input.value}
 			/>
 		{/each}
 		<slot />
