@@ -79,8 +79,6 @@ export const actions: Actions = {
 			'description'
 		]);
 
-		console.log(contactData);
-
 		const token = locals.user.accessToken;
 
 		try {

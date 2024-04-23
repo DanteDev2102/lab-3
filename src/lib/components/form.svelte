@@ -1,7 +1,7 @@
 <script lang="ts">
+	import type { IInput } from '$lib/models/interfaces/components';
 	import InputWithIcon from './inputWithIcon.svelte';
 	import { enhance } from '$app/forms';
-	import type { IInput } from '$lib/models/interfaces/components';
 
 	export let inputs: IInput[];
 	export let buttonTitle: string;
@@ -36,7 +36,7 @@
 				placeholder={input?.placeholder || ''}
 				isCheck={false}
 				handleChange={() => {}}
-				value={input.value}
+				value={input?.value}
 			/>
 		{/each}
 		<slot />
