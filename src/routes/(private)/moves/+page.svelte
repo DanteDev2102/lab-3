@@ -13,7 +13,7 @@
 	import Form from '$lib/components/form.svelte';
 	import Meta from '$lib/components/meta.svelte';
 	import InputWithIcon from '$lib/components/inputWithIcon.svelte';
-	
+
 	export let data: PageServerData;
 
 	const { user } = data;
@@ -34,7 +34,7 @@
 	let accountNumberPaymentAssign: string = '';
 
 	function assignContacts(contacts: Omit<IContact, 'user'>[]): string {
-		contactsModal = contacts
+		contactsModal = contacts;
 		return '';
 	}
 
@@ -59,20 +59,25 @@
 		if (notifications.length > 0) {
 			setTimeout(() => {
 				notifications = [];
+				location.reload();
 			}, 3000);
-		};
+		}
 	}
 </script>
 
 {#if notifications.length > 0}
-	 <Notification messages={notifications} />
+	<Notification messages={notifications} />
 {/if}
 
 <Modal id="modal" open={modal} {toogleModal}>
 	<h2 class="font-bold text-2xl text-center">Transferencia</h2>
-	
+
 	<div class="w-full flex justify-center my-6">
-		<button on:click={() => {modalFindContact = true}}>
+		<button
+			on:click={() => {
+				modalFindContact = true;
+			}}
+		>
 			<Icon icon="ic:twotone-save" width="2rem" height="2rem" />
 		</button>
 	</div>
@@ -119,22 +124,24 @@
 			colorBtn="33afb7"
 			colorFontBtn="ffffff"
 			callback={async ({ data }) => {
-				toogleModal()
+				toogleModal();
 
 				if (data.errors.length > 0) {
 					notifications = data.errors.map(({ error }) => {
 						return {
 							type: 'error',
 							message: error
-						}
+						};
 					});
 					return;
 				}
-			
-				notifications = [{
-					type:'success',
-					message: 'Transferencia realizada correctamente'
-				}];
+
+				notifications = [
+					{
+						type: 'success',
+						message: 'Transferencia realizada correctamente'
+					}
+				];
 			}}
 		>
 			<InputWithIcon
@@ -185,7 +192,7 @@
 		<button
 			class="join-item btn btn-outline hover:bg-inherit hover:text-black"
 			on:click={() => {
-				if(pageContacts > 1) pageContacts--
+				if (pageContacts > 1) pageContacts--;
 			}}
 		>
 			&#60
@@ -200,7 +207,7 @@
 		<button
 			class="join-item btn btn-outline hover:bg-inherit hover:text-black"
 			on:click={() => {
-				if(contactsModal.length === 10) pageContacts++
+				if (contactsModal.length === 10) pageContacts++;
 			}}
 		>
 			&#62
@@ -214,10 +221,13 @@
 			{@const formatContactsData = formatContacts(contacts.data.data)}
 			{assignContacts(formatContactsData)}
 			{#each formatContactsData as contact}
-				<tr class="hover:bg-gray-100 text-sm" on:click={() => {
-					accountNumberPaymentAssign = contact.accountNumber;
-					modalFindContact = false;
-				}}>
+				<tr
+					class="hover:bg-gray-100 text-sm"
+					on:click={() => {
+						accountNumberPaymentAssign = contact.accountNumber;
+						modalFindContact = false;
+					}}
+				>
 					<td>{contact.alias}</td>
 				</tr>
 			{/each}

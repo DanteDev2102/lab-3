@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { IContact } from '$lib/models/interfaces/contact';
+	import type { INotification } from '$lib/models/interfaces/components';
 	import type { PageData } from './$types';
 
 	import { enhance } from '$app/forms';
@@ -11,7 +12,6 @@
 	import Meta from '$lib/components/meta.svelte';
 	import { formatContact } from '$lib/formaters/contacts';
 	import { getContactById } from '$lib/services/bank/contacts';
-	import type { INotification } from '$lib/models/interfaces/components';
 
 	export let data: PageData;
 
@@ -217,7 +217,7 @@
 			<tbody>
 				{#each contacts as contact}
 					<tr
-						on:click={async () => {
+						on:dblclick={async () => {
 							const findContact = await getContactById(contact.id, user.accessToken);
 							openContact = formatContact(findContact.data.data);
 							openContactId = contact.id;
@@ -230,7 +230,9 @@
 						<td>
 							<form action="?/deleteContact" method="POST">
 								<input value={contact.id} name="id" class="hidden" />
-								<button class="btn btn-error text-white">ELIMINAR</button>
+								<button class="btn btn-error text-white">
+									<Icon icon="mingcute:delete-2-line" width="24" height="24" />
+								</button>
 							</form>
 						</td>
 					</tr>

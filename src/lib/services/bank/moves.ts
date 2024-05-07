@@ -33,26 +33,29 @@ export async function getSumEnterAndOutputsValuesInPeriod(
 	finishDate: number
 ) {
 	const values: { input: number; output: number } = { input: 0, output: 0 };
-
 	const { data } = await getAllMoves(token);
 
-	const assignValues = (moves: IMoveApi[]): void => {
-		moves
-			.filter(({ created_at }: IMoveApi) => {
-				const date = new Date(created_at).getTime();
-				return initDate <= date && finishDate >= date;
-			})
-			.forEach(({ multiplier, amount }: IMoveApi) => {
-				if (multiplier === 1) {
-					values.input += amount;
-					return;
-				}
+	console.log(
+		data.data.filter(({ created_at }: IMoveApi) => {
+			const date = new Date(created_at).getTime();
+			console.log(date, initDate, finishDate);
+			return date >= initDate && finishDate >= date;
+		})
+	);
 
-				values.output += amount;
-			});
-	};
+	data.data
+		.filter(({ created_at }: IMoveApi) => {
+			const date = new Date(created_at).getTime();
+			return date >= initDate && finishDate >= date;
+		})
+		.forEach(({ multiplier, amount }: IMoveApi) => {
+			if (multiplier === 1) {
+				values.input += amount;
+				return;
+			}
 
-	assignValues(data.data);
+			values.output += amount;
+		});
 
 	return values;
 }

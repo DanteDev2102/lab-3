@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
 	const { data } = await getMoves(token, 1);
 
-	const moves = formatMoves(data.data);
+	const moves = await Promise.all(await formatMoves(data.data, token));
 
 	return {
 		moves,
@@ -29,7 +29,7 @@ export const actions: Actions = {
 
 		const { data } = await getMoves(locals.user.accessToken, page);
 
-		const moves: IMove[] = formatMoves(data.data);
+		const moves: IMove[] = await Promise.all(await formatMoves(data.data, locals.user.accessToken));
 
 		return {
 			nextPage: moves.length === 10 ? page + 1 : null,
