@@ -79,7 +79,7 @@
 				<input
 					class="input input-xs input-bordered"
 					type="text"
-					placeholder="Select date"
+					placeholder="Seleccionar fecha"
 					bind:value={formattedStartDate}
 					on:click={() => (isOpen = !isOpen)}
 				/>
@@ -106,7 +106,7 @@
 				<input
 					class="input input-xs input-bordered"
 					type="text"
-					placeholder="Select date"
+					placeholder="Seleccionar fecha"
 					bind:value={formattedEndDate}
 					on:click={() => (isOpenEndDate = !isOpenEndDate)}
 				/>

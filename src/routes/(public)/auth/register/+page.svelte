@@ -40,7 +40,7 @@
 			name: 'birthdate'
 		},
 		{
-			title: 'Telefono',
+			title: 'Teléfono',
 			type: 'text',
 			iconLeft: false,
 			isRequired: true,

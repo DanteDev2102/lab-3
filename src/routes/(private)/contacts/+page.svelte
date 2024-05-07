@@ -210,7 +210,7 @@
 				<tr class="text-lg">
 					<th>Alias</th>
 					<th>Nro Cuenta</th>
-					<th>Descripcion</th>
+					<th>Descripción</th>
 					<th></th>
 				</tr>
 			</thead>

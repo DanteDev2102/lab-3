@@ -106,7 +106,7 @@
 		</label>
 		<label class="form-control w-full max-w-xs">
 			<div class="label">
-				<span class="label-text-alt font-bold text-xl">Cedula</span>
+				<span class="label-text-alt font-bold text-xl">Cédula</span>
 			</div>
 			<input
 				type="text"
@@ -117,7 +117,7 @@
 		</label>
 		<label class="form-control w-full max-w-xs">
 			<div class="label">
-				<span class="label-text-alt font-bold text-xl">Numero de cuenta</span>
+				<span class="label-text-alt font-bold text-xl">Número de cuenta</span>
 			</div>
 			<input
 				type="text"
